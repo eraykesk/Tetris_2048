@@ -137,7 +137,7 @@ class Tetromino:
                if position.y < self.grid_height:
                   self.tile_matrix[row][col].draw(position) 
                   
-      def rotation(self):
+   def rotation(self):
       length = len(self.tile_matrix)
       for row in range(0, int(length / 2)):
          for col in range(row, length - row - 1):
