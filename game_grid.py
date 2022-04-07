@@ -112,6 +112,10 @@ class GameGrid:
                # the game is over if any placed tile is above the game grid
                else:
                   self.game_over = True
+      
+      # clearing fully occupied rows
+      self.clear_full_lines()
+      
       # return the game_over flag
       return self.game_over
 
