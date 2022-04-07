@@ -114,3 +114,32 @@ class GameGrid:
                   self.game_over = True
       # return the game_over flag
       return self.game_over
+
+    
+    # Method for clearing full horizontal lines on the game board
+    def clear_full_lines(self):
+        # creating a new empty array to append the game board
+        # after deleting the full line
+        new_row = np.full((1, self.grid_width), None)
+
+        # loop for checking every row
+        for i in range (len(self.tile_matrix)):
+            # a boolean variable to check if tile is occupied
+            isFull = True
+            # loop for checking every column
+            for j in range(len(self.tile_matrix[i])):
+                # if cell is occupied isFull remains true and loop continues
+                if self.is_occupied(i,j):
+                    isFull = True
+                # if cell is not occupied isFull is updated to false and inner loop breaks
+                else:
+                    isFull = False
+                    break
+
+            # if isFull is true after checking every cell in a row deleting the row
+            # and adding a new empty row to game board
+            if isFull == True:
+
+                self.tile_matrix = np.delete(self.tile_matrix,i,0)
+                self.tile_matrix = np.append(self.tile_matrix,new_row,0)
+  
