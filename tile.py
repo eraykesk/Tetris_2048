@@ -12,10 +12,44 @@ class Tile:
 
    # Constructor that creates a tile with 2 as the number on it
    def __init__(self):
-      # set the number on the tile
-      self.number = 2
-      # set the colors of the tile
-      self.background_color = Color(151, 178, 199) # background (tile) color
+     # set the number on the tile
+        self.number_arr = {2, 4}
+        self.number = random.choice(tuple(self.number_arr))
+        # set the colors of the tile depending on the number
+        if self.number == 2:
+            self.background_color = Color(205,105,201)
+
+        if self.number == 4:
+            self.background_color = Color(238,0,0)
+
+        if self.number == 8:
+            self.background_color = Color(238,238,0)
+
+        if self.number == 16:
+            self.background_color = Color(99,184,255)
+
+        if self.number == 32:
+            self.background_color = Color(84,139,84)
+
+        if self.number == 64:
+            self.background_color = Color(208,32,144)
+
+        if self.number == 128:
+            self.background_color = Color(255,99,71)
+
+        if self.number == 256:
+            self.background_color = Color(0,199,140)
+
+        if self.number == 512:
+            self.background_color = Color(155,48,255)
+
+        if self.number == 1024:
+            self.background_color = Color(176,224,230)
+
+        if self.number == 2048:
+            self.background_color = Color(85,26,139)
+
+      
       self.foreground_color = Color(0, 100, 200) # foreground (number) color
       self.box_color = Color(0, 100, 200) # box (boundary) color
 
