@@ -53,8 +53,10 @@ def start():
                 # move the active tetromino down by one
                 # (soft drop: causes the tetromino to fall down faster)
                 current_tetromino.move(key_typed, grid)
-            # clear the queue of the pressed keys for a smoother interaction
-            stddraw.clearKeysTyped()
+            elif key_typed == "up":
+                current_tetromino.rotation()
+                # clear the queue of the pressed keys for a smoother interaction
+                stddraw.clearKeysTyped()
 
         # move the active tetromino down by one at each iteration (auto fall)
         success = current_tetromino.move("down", grid)
