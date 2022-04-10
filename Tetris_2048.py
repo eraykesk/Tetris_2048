@@ -79,8 +79,13 @@ def start():
         # display the game grid and the current tetromino
         grid.display()
 
-    # print a message on the console when the game is over
-    print("Game over")
+    # displaying the GameOver Message
+    stddraw.setFontFamily("Arial")
+    stddraw.setFontSize(50)
+    stddraw.setPenColor(stddraw.WHITE)
+    text_to_display = "Game Over!"
+    stddraw.text(6, 8, text_to_display)
+    stddraw.show()
 
 
 # Function for creating random shaped tetrominoes to enter the game grid
