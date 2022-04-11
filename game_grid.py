@@ -171,5 +171,9 @@ class GameGrid:
                          Tile.set_number(self.tile_matrix[i-1][k], n+n)
                          # deleting the upper tile
                          self.tile_matrix[i] = np.insert(np.delete(self.tile_matrix[i], k, 0), k, None)
+                            
+                         #updating the colors
+                         Tile.update_color(self.tile_matrix[i-1][k])
+                            
                          # updating the score
                          self.score += n+n
