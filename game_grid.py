@@ -121,6 +121,9 @@ class GameGrid:
         
         # merging tiles and updating colors
         self.merge_tiles()
+        
+        # deleting unconnected tiles
+        self.delete_unconnected()
 
         # return the game_over flag
         return self.game_over
@@ -180,3 +183,16 @@ class GameGrid:
                             
                          # updating the score
                          self.score += n+n
+                            
+    # a method for deleting unconnected tiles
+    def delete_unconnected(self):
+        # loop for checking every cell which is not at the border because they are connected to the borders
+        for i in range(1,len(self.tile_matrix)-1):
+            for j in range(1,len(self.tile_matrix[i])-1):
+                # checking if the cell is occupied
+                if self.is_occupied(i,j):
+                    # checking is any of the cells neighbors are occupied
+                    if not self.is_occupied(i+1,j) and not self.is_occupied(i,j-1) and not self.is_occupied(i,j+1) and not self.is_occupied(i-1,j):
+                        # if they are not occupied adding the number of the tile to the score and deleting it
+                        self.score += Tile.get_number(self.tile_matrix[i][j])
+                        self.tile_matrix[i] = np.insert(np.delete(self.tile_matrix[i], j, 0), j, None)
