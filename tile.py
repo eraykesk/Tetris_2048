@@ -21,35 +21,7 @@ class Tile:
 
         if self.number == 4:
             self.background_color = Color(238,0,0)
-
-        if self.number == 8:
-            self.background_color = Color(238,238,0)
-
-        if self.number == 16:
-            self.background_color = Color(99,184,255)
-
-        if self.number == 32:
-            self.background_color = Color(84,139,84)
-
-        if self.number == 64:
-            self.background_color = Color(208,32,144)
-
-        if self.number == 128:
-            self.background_color = Color(255,99,71)
-
-        if self.number == 256:
-            self.background_color = Color(0,199,140)
-
-        if self.number == 512:
-            self.background_color = Color(155,48,255)
-
-        if self.number == 1024:
-            self.background_color = Color(176,224,230)
-
-        if self.number == 2048:
-            self.background_color = Color(85,26,139)
-
-
+            
         self.foreground_color = Color(0, 100, 200) # foreground (number) color
         self.box_color = Color(0, 100, 200) # box (boundary) color
 
@@ -76,3 +48,36 @@ class Tile:
    # method to set the number of the tile 
    def set_number(self, number):
        self.number = number
+         
+         
+   #update color method for coloring the tile after merging    
+   def update_color(self):
+       if self.number == 4:
+           self.background_color = Color(238, 0, 0)
+
+       if self.number == 8:
+           self.background_color = Color(238, 238, 0)
+
+       if self.number == 16:
+           self.background_color = Color(99, 184, 255)
+
+       if self.number == 32:
+           self.background_color = Color(84, 139, 84)
+
+       if self.number == 64:
+           self.background_color = Color(208, 32, 144)
+
+       if self.number == 128:
+           self.background_color = Color(255, 99, 71)
+
+       if self.number == 256:
+           self.background_color = Color(0, 199, 140)
+
+       if self.number == 512:
+           self.background_color = Color(155, 48, 255)
+
+       if self.number == 1024:
+           self.background_color = Color(176, 224, 230)
+
+       if self.number == 2048:
+           self.background_color = Color(85, 26, 139)
