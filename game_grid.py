@@ -118,6 +118,9 @@ class GameGrid:
 
         # clearing fully occupied rows
         self.clear_full_lines()
+        
+        # merging tiles and updating colors
+        self.merge_tiles()
 
         # return the game_over flag
         return self.game_over
