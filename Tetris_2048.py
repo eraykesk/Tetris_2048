@@ -17,7 +17,7 @@ def start():
     canvas_h, canvas_w = 40 * grid_h, 40 * grid_w
     stddraw.setCanvasSize(canvas_w, canvas_h)
     # set the scale of the coordinate system
-    stddraw.setXscale(-0.5, grid_w - 0.5)
+    stddraw.setXscale(-0.5, grid_w + 2.5)
     stddraw.setYscale(-0.5, grid_h - 0.5)
 
     # set the dimension values stored and used in the Tetromino class
@@ -26,6 +26,10 @@ def start():
 
     # create the game grid
     grid = GameGrid(grid_h, grid_w)
+    
+    #create next tetromino for next piece
+    next_tetromino = create_tetromino(grid_h, grid_w)
+    
     # create the first tetromino to enter the game grid
     # by using the create_tetromino function defined below
     current_tetromino = create_tetromino(grid_h, grid_w)
@@ -73,8 +77,10 @@ def start():
                 break
             # create the next tetromino to enter the game grid
             # by using the create_tetromino function defined below
-            current_tetromino = create_tetromino(grid_h, grid_w)
+            current_tetromino = next_tetromino
             grid.current_tetromino = current_tetromino
+            next_tetromino = create_tetromino(grid_h, grid_w)
+            
 
         # display the game grid and the current tetromino
         grid.display()
@@ -91,7 +97,7 @@ def start():
 # Function for creating random shaped tetrominoes to enter the game grid
 def create_tetromino(grid_height, grid_width):
     # type (shape) of the tetromino is determined randomly
-    tetromino_types = ['I', 'O', 'Z']
+    tetromino_types = ['I', 'O', 'Z','S','J','L','T']
     random_index = random.randint(0, len(tetromino_types) - 1)
     random_type = tetromino_types[random_index]
     # create and return the tetromino
