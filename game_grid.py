@@ -11,6 +11,8 @@ class GameGrid:
         # set the dimensions of the game grid as the given arguments
         self.grid_height = grid_h
         self.grid_width = grid_w
+        # score variable
+        self.score = 0
         # create a tile matrix to store the tiles landed onto the game grid
         self.tile_matrix = np.full((grid_h, grid_w), None)
         # create the tetromino that is currently being moved on the game grid
@@ -154,3 +156,20 @@ class GameGrid:
                 self.tile_matrix = np.append(self.tile_matrix, new_row, 0)
                 self.score += temp_score
                 print(self.score)
+
+     # function to merge tiles with same number
+     # and updating score
+     def merge_tiles(self):
+         # loop for checking every element until 2nd line to not get index out of bounds error
+         for i in range(len(self.tile_matrix)-1):
+             for k in range(0,len(self.tile_matrix[i])):
+                 # checking if both tiles are occupied and have the same number
+                 if self.is_occupied(i - 1, k) and self.is_occupied(i, k):
+                     if Tile.get_number(self.tile_matrix[i][k]) == Tile.get_number(self.tile_matrix[i - 1][k]):
+                         # updating the number of the lower tile
+                         n = Tile.get_number(self.tile_matrix[i-1][k])
+                         Tile.set_number(self.tile_matrix[i-1][k], n+n)
+                         # deleting the upper tile
+                         self.tile_matrix[i] = np.insert(np.delete(self.tile_matrix[i], k, 0), k, None)
+                         # updating the score
+                         self.score += n+n
