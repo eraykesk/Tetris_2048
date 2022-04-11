@@ -68,3 +68,11 @@ class Tile:
       stddraw.setFontFamily(Tile.font_family)
       stddraw.setFontSize(Tile.font_size)
       stddraw.text(position.x, position.y, str(self.number))
+      
+   # method to get the number of tile
+   def get_number(self):
+       return self.number
+      
+   # method to set the number of the tile 
+   def set_number(self, number):
+       self.number = number
